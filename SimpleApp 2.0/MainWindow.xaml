@@ -1,0 +1,201 @@
+﻿<Window x:Name="start_window" x:Class="SimpleApp_2._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleApp_2._0"
+        mc:Ignorable="d" 
+        Height="450" 
+        Width="800"
+        WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450" ResizeMode="NoResize" Opacity="0.975">
+    <Window.Style>
+        <Style/>
+    </Window.Style>
+    <Window.Resources>
+        <Style x:Key="RoundButtonWithShadowStyle" 
+               TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="15">
+                            <Grid>
+                                <ContentPresenter 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect 
+                        Color="Gray" 
+                        Direction="8" 
+                        ShadowDepth="3" 
+                        BlurRadius="5" 
+                        Opacity="0.8" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundShadowStyle" 
+               TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15,15,0,0">
+                            <Grid>
+                                <ContentPresenter 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            CaptionHeight="25" 
+            GlassFrameThickness="0" 
+            CornerRadius="0"
+            />
+    </WindowChrome.WindowChrome>
+
+    <DockPanel x:Name="main_panel">
+        <DockPanel.Background>
+            <ImageBrush TileMode="Tile" ImageSource="/main_color.jpeg" Stretch="UniformToFill"/>
+        </DockPanel.Background>
+
+        <Grid x:Name="main_grid" RenderTransformOrigin="0.5,0.5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="column_0"/>
+                <ColumnDefinition x:Name="column_1"/>
+                <ColumnDefinition x:Name="column_2"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+
+            <DockPanel x:Name="title_bar"
+                       Grid.ColumnSpan="3"
+                       Grid.Row="0"/>
+
+            <Button x:Name="network_button"
+                    Grid.Column="0" Grid.Row="1"
+                    Width="160" Height="160" 
+                    Foreground="{x:Null}" BorderBrush="{x:Null}" 
+                    MouseEnter="network_button_MouseEnter" 
+                    MouseLeave="network_button_MouseLeave" 
+                    Padding="0,0,0,0"
+                    Style="{StaticResource RoundButtonWithShadowStyle}" Click="network_button_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/free-animated-icon-connection-7211809.png"/>
+                </Button.Background>
+
+            </Button>
+            <Label x:Name="network_label"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Content="Мережеві адаптери"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   BorderThickness="3,3,3,3" 
+                   FontFamily="Arial Black"
+                   Width="200" Height="34" 
+                   HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" 
+                   Foreground="White" 
+                   Background="#FF0B8E00" 
+                   Visibility="Hidden"
+                   />
+
+
+            <Button x:Name="chipset_button"
+                    Grid.Column="1" Grid.Row="1"
+                    Width="160" Height="160" 
+                    Foreground="{x:Null}" BorderBrush="{x:Null}" 
+                    MouseEnter="chipset_button_MouseEnter" 
+                    MouseLeave="chipset_button_MouseLeave"
+                    Padding="0,0,0,0"
+                    Style="{StaticResource RoundButtonWithShadowStyle}" Click="chipset_button_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/free-animated-icon-settings-8121259.png"/>
+                </Button.Background>
+            </Button>
+            <Label x:Name="chipset_label"
+                   Grid.Column="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Content="Обладнання"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   BorderThickness="3,3,3,3" 
+                   FontFamily="Arial Black" 
+                   Width="200" Height="34" 
+                   HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" 
+                   Foreground="White" 
+                   Background="#FF0B8E00" 
+                   Visibility="Hidden"
+                    />
+
+
+            <Button x:Name="program_button"
+                    Grid.Column="2" Grid.Row="1"
+                    Width="160" Height="160" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}" 
+                    MouseEnter="program_button_MouseEnter" 
+                    MouseLeave="program_button_MouseLeave"
+                    Style="{StaticResource RoundButtonWithShadowStyle}" Click="program_button_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/free-animated-icon-checklist-6416398.png"/>
+                </Button.Background>
+            </Button>
+            <Label x:Name="program_label"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Програми"
+                FontSize="16"
+                FontWeight="Bold"
+                BorderThickness="3,3,3,3" 
+                FontFamily="Arial Black" 
+                Width="200" Height="34" 
+                HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" 
+                Foreground="White" 
+                Background="#FF0B8E00" 
+                Visibility="Hidden"
+                    />
+
+
+            <Button x:Name="close_button"
+                    Grid.Column="1" Grid.Row="2" 
+                    Width="130" Height="40" 
+                    HorizontalAlignment="Center"
+                    Background="White"
+                    BorderThickness="0,0,0,0"
+                    Content="Закрити"
+                    Style="{StaticResource RoundShadowStyle}" 
+                    VerticalAlignment="Bottom" 
+                    FontFamily="Impact" 
+                    FontSize="16" Margin="0,0,0,-2"
+                    MouseEnter="close_button_MouseEnter" 
+                    MouseLeave="close_button_MouseLeave" Click="close_button_Click"
+                    />
+        </Grid>
+    </DockPanel>
+</Window>
